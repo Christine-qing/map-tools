@@ -1,4 +1,3 @@
-
 <template>
     <div class="header">
         logo </div>

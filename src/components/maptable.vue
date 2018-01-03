@@ -1,4 +1,3 @@
-
 <template>
     <div id="table" v-if="index===0">
         <Table stripe :columns="columns" :data="setData" height="350" class="tab" ref=table no-data-text="抱歉，请去地图打点"></Table>

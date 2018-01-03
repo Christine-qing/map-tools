@@ -1,4 +1,3 @@
-
 <template>
     <div class="bigmap">
         <div id="allmap"> </div>
@@ -35,7 +34,6 @@
         mounted() {
             bus.$on("love", this.change)
             this.init()
-            // bus.$on("tabVal",this.tableVal)
         },
         methods: {
             // init初始化地图
@@ -43,7 +41,7 @@
                 let map = new BMap.Map('allmap', {
                     enableMapClick: true
                 });
-                map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); // 初始化地图,设置中心点坐标和地图级别
+                map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); 
                 map.addControl(new BMap.MapTypeControl()); //添加地图类型控件 卫星 地图 三维
                 map.setCurrentCity("北京");
                 map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放      
@@ -89,10 +87,6 @@
             lessen() {
                 this.map.setZoom(this.map.getZoom() - 1);
             },
-            //一次性添加到表格
-            // addTableVule(){
-            // //  bus.$emit("tabVal",this.overlays)
-            // }
         }
     }
 </script>
