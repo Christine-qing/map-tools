@@ -28,9 +28,9 @@ npm test
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 # map-tools
-# map-tools
 
-在 vue 中避免不了组件中的通信，无论是父子组件还是非父子组件，那我们今天就讲一个简单的组件通信，通过vue 中的bus来实现。
+
+** 在 vue 中避免不了组件中的通信，无论是父子组件还是非父子组件，那我们今天就讲一个简单的组件通信，通过vue 中的bus来实现。**
 
 第一步我们需要在src的文件夹新建一个  ` bus.js `的文件,然后将vue引入并导出：
 ```
