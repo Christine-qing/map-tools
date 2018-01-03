@@ -1,8 +1,8 @@
 # map-tools
 
-> map-tools
+> map-tools 地图工具
 
-## vue 框架搭建 百度地图工具，内含bus通信
+## vue cli搭建 UI框架iview，百度地图，包含vue的bus通信
 
 ## Build Setup
 

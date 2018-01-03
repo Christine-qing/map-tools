@@ -33,12 +33,10 @@
                 // bus.$emit("love",0);
                 bus.$emit("tabDisplay", 0)
             },
-            // 九宫格展现
             squaredUp() {
                 // bus.$emit("love",1);
                 bus.$emit("tabDisplay", 1)
             },
-            // 上传坐标
             upload() {
                 alert("第三个事件")
             },

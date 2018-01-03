@@ -1,15 +1,13 @@
 
 <template>
     <div id="table" v-if="index===0">
-        <Table stripe :columns="columns1" :data="data1" height="350" class="tab" ref=table no-data-text="抱歉，请去地图打点"></Table>
+        <Table stripe :columns="columns" :data="setData" height="350" class="tab" ref=table no-data-text="抱歉，请去地图打点"></Table>
         <Button type="primary" size="large" @click="exportData(1)" class="latBtn">
-                                   <Icon type="ios-download-outline"></Icon> 
-                                  经纬度导出
-                            </Button>
+          <Icon type="ios-download-outline"></Icon> 经纬度导出
+         </Button>
         <!-- <Button type="primary" size="large" @click="exportData(2)" class="lngBtn">
-                                  <Icon type="ios-download-outline"></Icon>
-                                   纬经度导出
-                            </Button> -->
+           <Icon type="ios-download-outline"></Icon> 纬经度导出
+           </Button> -->
     </div>
 </template>
 
@@ -20,7 +18,7 @@
             return {
                 index: 1,
                 tableValue: [],
-                columns1: [{
+                columns: [{
                         title: 'name',
                         key: "name"
                     },
@@ -33,13 +31,7 @@
                         key: 'lng'
                     }
                 ],
-                data1: [
-                    // {
-                    //     name:'',
-                    //     lat :'',
-                    //     lng: ''
-                    // },
-                ]
+                setData: []
             }
         },
         mounted() {
@@ -48,8 +40,9 @@
             bus.$on("tabVal", this.tableVal)
         },
         methods: {
-            tableDisplay(d) {
-                this.index = d;
+            tableDisplay(value) {
+                debugger
+                this.index = value;
             },
             // 将数据添加到表格
             tableVal(point) {
@@ -63,18 +56,17 @@
                 //     })
                 // })
                 if (point.lat) {
-                    this.data1.push({
-                        name: this.data1.length + 1,
+                    this.setData.push({
+                        name: this.setData.length + 1,
                         lat: point.lat,
                         lng: point.lng
                     });
                 } else {
-                    this.data1 = [];
+                    this.setData = [];
                 }
             },
             //导出数据 
             exportData(type) {
-                // debugger
                 if (type === 1) {
                     this.$refs.table.exportCsv({
                         filename: '经纬度导出',
@@ -84,7 +76,7 @@
                 else if (type === 2) {
                     this.$refs.table.exportCsv({
                         filename: '纬经度导出',
-                        columns1: 111,
+                        columns: 111,
                     });
                 }
             }

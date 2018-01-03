@@ -4,22 +4,19 @@
         <div id="allmap"> </div>
         <div class="search">
             <div id="r-result">
-                <!--    <input type="text" id="suggestId" size="20" value="" style="width:130px;" />-->
+                <!--搜索框-->
+                <input type="text" id="suggestId" size="20" value="" />
             </div>
-            <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+            <div id="searchResultPanel"></div>
         </div>
         <div class="btn">
+            <!-- 依次是放大，缩小，打点，取消打点，清空 -->
             <Button-group vertical>
-                <!-- <Button type="info" v-if="index===1" icon="plus-round" @click="enlarge"></Button>-->
                 <Button type="info" icon="plus-round" @click="enlarge"></Button>
                 <Button type="info" icon="minus-round" @click="lessen"></Button>
-                <!--  地图打点-->
                 <Button type="info" icon="edit" @click="capture"></Button>
-                <!--  切换手型-->
                 <Button type="info" icon="android-hand" @click="hand"></Button>
-                <!--  清空画布-->
                 <Button type="info" icon="trash-a" @click="clearAll"></Button>
-                <!-- <Button type="info" icon="ios-cart" @click="addTableVule"></Button>-->
             </Button-group>
         </div>
     </div>
@@ -47,20 +44,21 @@
                     enableMapClick: true
                 });
                 map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); // 初始化地图,设置中心点坐标和地图级别
-                // map.addControl(new BMap.MapTypeControl());   //添加地图类型控件 卫星 地图 三维
+                map.addControl(new BMap.MapTypeControl()); //添加地图类型控件 卫星 地图 三维
                 map.setCurrentCity("北京");
                 map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放      
                 this.map = map;
             },
-            // change(i) {
-            //     console.log(i);
-            //     this.index=i;
-            // },
+            change(i) {
+                debugger
+                console.log(i);
+                this.index=i;
+            },
             // 打点
             capture(e) {
                 this.map.addEventListener("click", this.captureOpen);
             },
-            // 打点的具体操作
+            // 打点
             captureOpen(e) {
                 let point = new BMap.Point(e.point.lng, e.point.lat)
                 let marker = new BMap.Marker(point);
@@ -80,18 +78,15 @@
                     this.map.removeOverlay(item);
                 }
                 this.overlays.length = 0;
-                //  this.map.clearOverlays()
                 this.map.removeEventListener("click", this.captureOpen, false);
                 bus.$emit("tabVal", {})
             },
             // 放大地图
             enlarge() {
-                // console.log(this.map)
                 this.map.setZoom(this.map.getZoom() + 1);
             },
             // 缩小地图
             lessen() {
-                // console.log(this.map)
                 this.map.setZoom(this.map.getZoom() - 1);
             },
             //一次性添加到表格
@@ -125,13 +120,14 @@
     }
     #suggestId {
         position: absolute;
-        top: 0;
-        right: 0
+        top: -10px;
+        right: 80px;
+        width: 130px;
     }
     .btn {
         position: absolute;
         right: 0;
-        top: 20px;
+        top: 50px;
     }
     .BMapLib_circle,
     .BMapLib_polyline,
@@ -141,5 +137,11 @@
     }
     .BMapLib_Drawing_panel {
         margin-left: 30px
+    }
+    #searchResultPanel {
+        border: 1px solid #C0C0C0;
+        width: 150px;
+        height: auto;
+        display: none;
     }
 </style>
