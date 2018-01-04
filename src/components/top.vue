@@ -12,11 +12,7 @@
         mounted() {
             bus.$on("love", this.abc)
         },
-        methods: {
-            abc(a, b) {
-                // console.log("abc==="+a, b);
-            }
-        }
+        methods: {}
     }
 </script>
 

@@ -2,11 +2,11 @@
     <div id="table" v-if="index===0">
         <Table stripe :columns="columns" :data="setData" height="350" class="tab" ref=table no-data-text="抱歉，请去地图打点"></Table>
         <Button type="primary" size="large" @click="exportData(1)" class="latBtn">
-          <Icon type="ios-download-outline"></Icon> 经纬度导出
-         </Button>
+              <Icon type="ios-download-outline"></Icon> 经纬度导出
+             </Button>
         <!-- <Button type="primary" size="large" @click="exportData(2)" class="lngBtn">
-           <Icon type="ios-download-outline"></Icon> 纬经度导出
-           </Button> -->
+               <Icon type="ios-download-outline"></Icon> 纬经度导出
+               </Button> -->
     </div>
 </template>
 
@@ -40,20 +40,10 @@
         },
         methods: {
             tableDisplay(value) {
-                debugger
                 this.index = value;
             },
             // 将数据添加到表格
             tableVal(point) {
-                debugger
-                // this.tableValue = point;
-                // point.forEach((item, index, arr) => {
-                //     this.data1.push({
-                //         name: index,
-                //         lat: item.point.lat,
-                //         lng: item.point.lng
-                //     })
-                // })
                 if (point.lat) {
                     this.setData.push({
                         name: this.setData.length + 1,
@@ -71,7 +61,6 @@
                         filename: '经纬度导出',
                     });
                 }
-                // console.log(this.$refs.table.exportCsv)
                 else if (type === 2) {
                     this.$refs.table.exportCsv({
                         filename: '纬经度导出',

@@ -41,8 +41,6 @@
                 this.map = map;
             },
             change(i) {
-                debugger
-                console.log(i);
                 this.index = i;
             },
             // 打点
