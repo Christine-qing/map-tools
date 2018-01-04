@@ -1,13 +1,6 @@
 <template>
     <div class="bigmap">
         <div id="allmap"> </div>
-        <div class="search">
-            <div id="r-result">
-                <!--搜索框-->
-                <input type="text" id="suggestId" size="20" value="" />
-            </div>
-            <div id="searchResultPanel"></div>
-        </div>
         <div class="btn">
             <!-- 依次是放大，缩小，打点，取消打点，清空 -->
             <Button-group vertical>
@@ -41,7 +34,7 @@
                 let map = new BMap.Map('allmap', {
                     enableMapClick: true
                 });
-                map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); 
+                map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
                 map.addControl(new BMap.MapTypeControl()); //添加地图类型控件 卫星 地图 三维
                 map.setCurrentCity("北京");
                 map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放      
@@ -50,7 +43,7 @@
             change(i) {
                 debugger
                 console.log(i);
-                this.index=i;
+                this.index = i;
             },
             // 打点
             capture(e) {
@@ -107,17 +100,7 @@
         -webkit-transition: all 0.5s ease-in-out;
         transition: all 0.5s ease-in-out;
     }
-    .search {
-        position: absolute;
-        right: 50px;
-        top: 20px;
-    }
-    #suggestId {
-        position: absolute;
-        top: -10px;
-        right: 80px;
-        width: 130px;
-    }
+ 
     .btn {
         position: absolute;
         right: 0;
@@ -131,11 +114,5 @@
     }
     .BMapLib_Drawing_panel {
         margin-left: 30px
-    }
-    #searchResultPanel {
-        border: 1px solid #C0C0C0;
-        width: 150px;
-        height: auto;
-        display: none;
     }
 </style>

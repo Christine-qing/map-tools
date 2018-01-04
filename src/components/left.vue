@@ -7,10 +7,12 @@
                 </Tooltip>
             </li>
             <li @click="squaredUp" title="33222">
-                <Icon type="qr-scanner" class="icon"></Icon>
+                <Icon type="ios-information" class="icon"></Icon>
+                <!-- <Icon type="qr-scanner" class="icon"></Icon> -->
             </li>
             <li @click="upload">
-                <Icon type="ios-cloud-upload" class="icon"></Icon>
+                <!-- <Icon type="ios-cloud-upload" class="icon"></Icon> -->
+                <Icon type="help-circled" class="icon"></Icon>
             </li>
             <li></li>
         </ul>
